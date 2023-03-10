@@ -44,5 +44,18 @@ body{
 }
 
 .nav-menu-item{
-    
+    font-size: 18px;
+    margin: 0 10px;
+    line-height: 90px;
+    width: max-content;
+}
+
+.nav-menu-link{
+    padding: 8px 12px;
+    border-radius: 10px;
+}
+
+.nav-menu-link:hover{
+    background-color: cyan;
+    transition: 0,7s;
 }
