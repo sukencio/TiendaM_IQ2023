@@ -7,16 +7,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <!--      <div>Saludos desde MVC</div>
-                <p th:text="${mensaje}"></p>
-                <br/>
-                <br/>
-                <p>Nombre: <span th:text="${objetocliente.nombre}"></span></p>
-                <p>Apellidos: <span th:text="${objetocliente.Apellidos}"></span></p>
-                <p>Correo: <span th:text="${objetocliente.Correo}"></span></p>
-                <p>Telefono: <span th:text="${objetocliente.Telefono}"></span></p>-->
-
-        <h1>Lista de clientes</h1>
+        <a th:href="@{/nuevoCliente}">Nuevo Cliente</a>
+        <header th:replace="Layout/plantilla :: header"/>
+        <h2>Lista de clientes</h2>
         <div th:if="${clientes != null and !clientes.empty">
             <table border="1">
                 <thead>
@@ -24,6 +17,7 @@
                 <th>Apellidos</th>
                 <th>Correo</th>
                 <th>Telefono</th>
+                <th colspan="2">Acciones</th>
                 </thead>
                 <tbody>
                     <tr th:each="item: ${clientes}">
@@ -31,6 +25,8 @@
                         <td th:text="${item.Apellidos}"></td>
                         <td th:text="${item.Correo}"></td>
                         <td th:text="${item.Telefono}"></td>
+                        <td><a th:href="@{/modificarCliente/} + ${item.Idcliente">Modificar</a></td>
+                        <td><a th:href="@{/eliminarCliente/} + ${item.Idcliente">Eliminar</a></td>
                     </tr>
                 </tbody>
 
@@ -39,5 +35,6 @@
         <div th:if="${clientes == null or clientes.empty">
             La lista esta vacia...
         </div>
+        <footer th:replace="Layout/plantilla :: Footer" />
     </body>
 </html>
