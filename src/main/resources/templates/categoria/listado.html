@@ -1,43 +1,39 @@
-<html xmlns:th="http://www.timeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="/css/Menu.css" rel="stylesheet" type="text/css"/>
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <header th:replace="Layout/plantilla :: header"/>
+        <header th:replace="layout/plantilla :: header" />
         <div class="contenido">
-            <h2>Lista de categorias</h2>
-        <a th:href="@{/nuevoCliente}">Nuevo Cliente</a>
-        <div th:if="${clientes != null and !clientes.empty">
-            <table border="1">
-                <thead>
-                <th>Nombre</th>
-                <th>Apellidos</th>
-                <th>Correo</th>
-                <th>Telefono</th>
-                <th>Limite</th>
-                <th colspan="2">Acciones</th>
-                </thead>
-                <tbody>
-                    <tr th:each="item: ${clientes}">
-                        <td th:text="${item.Nombre}"></td>
-                        <td th:text="${item.Apellidos}"></td>
-                        <td th:text="${item.Correo}"></td>
-                        <td th:text="${item.Telefono}"></td>
-                        <td th:text="${#numbers.formatDecimal(item.credito.limite, 3, 2)}"></td>
-                        <td><a th:href="@{/modificarCliente/} + ${item.Idcliente">Modificar</a></td>
-                        <td><a th:href="@{/eliminarCliente/} + ${item.Idcliente">Eliminar</a></td>
-                    </tr>
-                </tbody>
+            <h2>Lista de clientes</h2>
+            <a th:href="@{/categoria/nuevo}">Nueva Categoria</a>
+            <br/><!-- comment -->
+            <br/>
+            <div th:if="${categorias != null and !categorias.empty}">
+                <table border="1">
+                    <thead>
+                    <th>Descripcion</th>
+                    <th>Activo</th>
+                    <th colspan="2">Acciones</th>
+                    </thead>
+                    <tbody>
+                        <tr th:each="item : ${categorias}">
+                            <td th:text="${item.descripcion}"></td>
+                            <td><input type="checkbox" name="activo" th:checked="${item.activo}" disable="true"></td>
 
-            </table>
+                            <td><a th:href="@{/categoria/modificar/} + ${item.idCategoria}">Modificar</a></td>
+                            <td><a th:href="@{/categoria/eliminar/} + ${item.idCategoria}">Eliminar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div th:if="${categorias == null or categorias.empty}">
+                La lista de clientes esta vacia...
+            </div>
         </div>
-        <div th:if="${clientes == null or clientes.empty">
-            La lista esta vacia...
-        </div>
-        </div>
-        <footer th:replace="Layout/plantilla :: Footer" />
+        <footer th:replace="layout/plantilla :: footer" />
     </body>
 </html>

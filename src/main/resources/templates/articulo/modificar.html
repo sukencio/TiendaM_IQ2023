@@ -1,41 +1,44 @@
-<html xmlns:th="http://www.timeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Modificar cliente</title>
+        <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="/css/Menu.css" rel="stylesheet" type="text/css"/>
+        <link href="estilotest.css" rel="stylesheet" type="text/css"/>
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <header th:replace="Layout/plantilla :: header"/>
+        <header th:replace="layout/plantilla :: header" />
         <div class="contenido">
             <h2>Datos del cliente</h2>
-        <a th:href="@{/cliente/listado}">Regresar</a>
-        <br/>
-        <br/>
-        <form th:action="@{/cliente/guardar}"
-              method="POST"
-              th:object="${cliente}">
-            
-            <input type="hidden" name="Idcliente" th:field="*{Idcliente}" />
-            <label for="nombre">Nombre</label>
-            <input type="text" id="nombre" name="nombre" th:fields="{nombre}"><br/>
-            
-            <label for="apellidos">Apellido</label>
-            <input type="text" id="apellido" name="apellidos" th:fields="{apellidos}"><br/>
-            
-            <label for="Correo">Correo</label>
-            <input type="email" id="correo" name="Correo" th:fields="{Correo}"><br/>
-            
-            <label for="Telefono">Telefono</label>
-            <input type="tel" id="telefono" name="Telefono" th:fields="{Telefono}"><br/>
-            
-            <input type="hidden" name="Idcredito" th:field="*{credito.Idcredito}">
-            <label for="limite">Limite de credito:</label>
-            <input type="number" id="limite" name="limite" th:fields="{credito.limite}"><br/><br/>
-            
-            <input type="submit" name="Guardar" value="Guardar">
-        </form>
+            <a th:href="@{/articulo/listado}">Regrasar</a>
+            <br/>
+
+            <form th:action="@{/articulo/guardar}"
+                  method="POST"
+                  th:object="${articulo}">
+                <input type="hidden" name="idArticulo" th:field="*{idArticulo}"/>
+                <label for="categoria">Categoria:</label><br/>
+                <select th:field="*{idCategoria}">
+                    <option th:each="categoria: ${categorais}"
+                            th:value="${categoria.idCategoria}"
+                            th:text="${categoria.descripcion}"/>
+                </select><br/>
+                <input type="text" id="descripcion" name="descripcion" th:field="*{descripcion}"><br/>
+                <label for="detalle">Detalle:</label>
+                <textarea name="detalle" th:field="*{detalle}" rows="6" cols="50"><br/>
+
+                <label for="precio">Precio:</label><br/>
+                <input type="number" id="precio" name="precio" th:field="*{precio}"><br/>
+
+                <label for="existencias">Existencias:</label><br/>
+                <input type="number" id="existencias" name="existencias" th:field="*{existencias}"><br/>
+
+                <label for="activo">Activo:</label><br/>
+                <input type="checkbox" id="activo" name="activo" th:field="*{activo}"><br/>
+
+                <input type="submit" name="guardar" value="Guardar"/>
+            </form>
         </div>
-        <footer th:replace="Layout/plantilla :: Footer" />
+        <footer th:replace="layout/plantilla :: footer" />
     </body>
 </html>
