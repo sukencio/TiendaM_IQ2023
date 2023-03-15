@@ -1,40 +1,37 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.timeleaf.org">
+
     <head>
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/css/Menu.css" rel="stylesheet" type="text/css"/>
     </head>
-    <body>
-        <a th:href="@{/nuevoCliente}">Nuevo Cliente</a>
+    
         <header th:replace="Layout/plantilla :: header"/>
-        <h2>Lista de clientes</h2>
-        <div th:if="${clientes != null and !clientes.empty">
+        <div class="contenido">
+            <h2>Articulos Disponibles</h2>
+        <div th:if="${Articulos != null and !Articulos.empty">
             <table border="1">
                 <thead>
-                <th>Nombre</th>
-                <th>Apellidos</th>
-                <th>Correo</th>
-                <th>Telefono</th>
-                <th colspan="2">Acciones</th>
+                <th>Descripcion</th>
+                <th>Precio</th>
+                <th>Acciones</th>
                 </thead>
                 <tbody>
-                    <tr th:each="item: ${clientes}">
-                        <td th:text="${item.Nombre}"></td>
-                        <td th:text="${item.Apellidos}"></td>
-                        <td th:text="${item.Correo}"></td>
-                        <td th:text="${item.Telefono}"></td>
-                        <td><a th:href="@{/modificarCliente/} + ${item.Idcliente">Modificar</a></td>
-                        <td><a th:href="@{/eliminarCliente/} + ${item.Idcliente">Eliminar</a></td>
+                    <tr th:each="item: ${Articulos}">
+                        <td th:text="${item.descripcion}"></td>
+                        <td th:text="${#numbers.formatDecimal(item.precio, 3, 2)}"></td>
+                        <td><a th:href="@{/carrito/agregar/} + ${item.Idarticulo">Comprar</a></td>
                     </tr>
                 </tbody>
 
             </table>
         </div>
-        <div th:if="${clientes == null or clientes.empty">
-            La lista esta vacia...
+        <div th:if="${Articulos == null or Articulos.empty">
+            La lista de articulos esta vacia...
+        </div>
         </div>
         <footer th:replace="Layout/plantilla :: Footer" />
-    </body>
-</html>
+    
+

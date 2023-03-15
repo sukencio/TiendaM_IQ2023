@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 
@@ -18,11 +20,16 @@ public class Cliente implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idcliente;
+    private Long Idcliente;
     private String nombre;
     private String Apellidos;
     private String Correo;
     private String Telefono;
+    
+    @JoinColumn(name="id_credito", referencedColumnName ="id_credito")
+    @ManyToOne
+    private Credito credito;
+    
 
     public Cliente() {
     }

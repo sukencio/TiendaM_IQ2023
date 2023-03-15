@@ -10,23 +10,23 @@
         <a th:href="@{/}">Regresar</a>
         <br/>
         <br/>
-        <form th:action="@{/guardarCliente}"
+        <form th:action="@{/cliente/guardar}"
               method="POST"
               th:object="${cliente}">
             <input type="hidden" name="Idcliente" th:field="*{Idcliente}" />
             
-            <label for="nombre">Nombre</label>
+            <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" th:fields="{nombre}"><br/>
             
-            <label for="Apellidos">Apellido</label>
-            <input type="text" id="apellido" name="nombre" th:fields="{nombre}"><br/>
+            <label for="apellidos">Apellido:</label>
+            <input type="text" id="apellidos" name="apellidos" th:fields="{apellidos}"><br/>
             
-            <label for="Correo">Correo</label>
-            <input type="text" id="correo" name="nombre" th:fields="{nombre}"><br/>
+            <label for="correo">Correo:</label>
+            <input type="email" id="correo" name="correo" th:fields="{correo}"><br/>
             
-            <label for="Telefono">Telefono</label>
-            <input type="text" id="telefono" name="nombre" th:fields="{nombre}"><br/>
-            
+            <label for="Telefono">Telefono:</label>
+            <input type="tel" id="telefono" name="telefono" th:fields="{Telefono}"><br/>
+
             <input type="submit" name="Guardar" value="Guardar">
 
             
