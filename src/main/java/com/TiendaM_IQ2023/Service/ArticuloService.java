@@ -1,16 +1,16 @@
 package com.TiendaM_IQ2023.Service;
 
-import com.TiendaM_IQ2023.domain.articulo;
+import com.TiendaM_IQ2023.domain.Articulo;
 import java.util.List;
 
 public interface ArticuloService {
 
-    public List<articulo> getarticulo(boolean activos);
+    public List<Articulo> getarticulo(boolean activos);
 
-    public articulo getarticulo(articulo articulo);
+    public Articulo getarticulo(Articulo articulo);
 
-    public void save(articulo articulo);
+    public void save(Articulo articulo);
 
-    public void delete(articulo articulo);
+    public void delete(Articulo articulo);
 
 }

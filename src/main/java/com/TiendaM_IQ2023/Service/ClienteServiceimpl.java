@@ -29,7 +29,7 @@ public class ClienteServiceimpl implements ClienteService {
     @Override
     @Transactional(readOnly = true)
     public Cliente getCliente(Cliente cliente) {
-        return clienteDao.findById(cliente.getIdcliente()).orElse(null);
+        return clienteDao.findById(cliente.getIdCliente()).orElse(null);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class ClienteServiceimpl implements ClienteService {
     @Override
     @Transactional
     public void delete(Cliente cliente) {
-        clienteDao.deleteById(cliente.getIdcliente());
+        clienteDao.deleteById(cliente.getIdCliente());
     }
     
 }

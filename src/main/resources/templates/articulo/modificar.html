@@ -15,7 +15,7 @@
 
             <form th:action="@{/articulo/guardar}"
                   method="POST"
-                  th:object="${articulo}">
+                  th:object="${Articulo}">
                 <input type="hidden" name="idArticulo" th:field="*{idArticulo}"/>
                 <label for="categoria">Categoria:</label><br/>
                 <select th:field="*{idCategoria}">

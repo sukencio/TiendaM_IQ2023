@@ -1,49 +1,45 @@
 package com.TiendaM_IQ2023.Service;
 
 import com.TiendaM_IQ2023.Dao.categoriaDao;
-import com.TiendaM_IQ2023.domain.categoria;
+import com.TiendaM_IQ2023.domain.Categoria;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class CategoriaServiceimpl implements CategoriaService{
-    
+public class CategoriaServiceimpl implements CategoriaService {
+
     @Autowired
     categoriaDao categoriaDao;
 
     @Override
     @Transactional(readOnly = true)
-    public List<categoria> getcategorias(boolean activos) {
-        List<categoria> lista= (List<categoria>) categoriaDao.findAll();
-        
-        if(activos)
-        {
-            lista.removeIf(e ->!e.isActivo());
+    public List<Categoria> getCategorias(boolean activos) {
+        List<Categoria> lista = (List<Categoria>) categoriaDao.findAll();
+
+        if (activos) {
+            lista.removeIf(e -> !e.isActivo());
         }
         return lista;
     }
 
     @Override
     @Transactional(readOnly = true)
-    public categoria getcategoria(categoria categoria) {
-        return categoriaDao.findById(categoria.getIdcategoria()).orElse(null);
+    public Categoria getCategoria(Categoria categoria) {
+        return categoriaDao.findById(categoria.getIdCategoria()).orElse(null);
     }
 
     @Override
     @Transactional
-    public void save(categoria categoria) {
+    public void save(Categoria categoria) {
         categoriaDao.save(categoria);
     }
 
     @Override
     @Transactional
-    public void delete(categoria categoria) {
-        categoriaDao.deleteById(categoria.getIdcategoria());
+    public void delete(Categoria categoria) {
+        categoriaDao.deleteById(categoria.getIdCategoria());
     }
-    
+
 }
-
-    
-

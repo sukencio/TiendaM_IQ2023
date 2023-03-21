@@ -16,7 +16,7 @@
               method="POST"
               th:object="${cliente}">
             
-            <input type="hidden" name="Idcliente" th:field="*{Idcliente}" />
+            <input type="hidden" name="idCliente" th:field="*{idCliente}" />
             <label for="nombre">Nombre</label>
             <input type="text" id="nombre" name="nombre" th:fields="{nombre}"><br/>
             
@@ -29,7 +29,7 @@
             <label for="Telefono">Telefono</label>
             <input type="tel" id="telefono" name="Telefono" th:fields="{Telefono}"><br/>
             
-            <input type="hidden" name="Idcredito" th:field="*{credito.Idcredito}">
+            <input type="hidden" name="idCredito" th:field="*{credito.idCredito}">
             <label for="limite">Limite de credito:</label>
             <input type="number" id="limite" name="limite" th:fields="{credito.limite}"><br/><br/>
             

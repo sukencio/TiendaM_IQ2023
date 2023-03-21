@@ -1,16 +1,16 @@
 package com.TiendaM_IQ2023.Service;
 
-import com.TiendaM_IQ2023.domain.categoria;
+import com.TiendaM_IQ2023.domain.Categoria;
 import java.util.List;
 
 public interface CategoriaService {
 
-    public List<categoria> getcategorias(boolean activos);
+    public List<Categoria> getCategorias(boolean activos);
 
-    public categoria getcategoria(categoria categoria);
+    public Categoria getCategoria(Categoria categoria);
 
-    public void save(categoria categoria);
+    public void save(Categoria categoria);
 
-    public void delete(categoria categoria);
+    public void delete(Categoria categoria);
 
 }

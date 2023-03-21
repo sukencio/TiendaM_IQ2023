@@ -22,7 +22,7 @@
                     <tr th:each="item: ${Articulos}">
                         <td th:text="${item.descripcion}"></td>
                         <td th:text="${#numbers.formatDecimal(item.precio, 3, 2)}"></td>
-                        <td><a th:href="@{/carrito/agregar/} + ${item.Idarticulo">Comprar</a></td>
+                        <td><a th:href="@{/carrito/agregar/} + ${item.idArticulo">Comprar</a></td>
                     </tr>
                 </tbody>
 

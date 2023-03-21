@@ -1,7 +1,7 @@
 package com.TiendaM_IQ2023.controller;
 
 import com.TiendaM_IQ2023.Service.CategoriaService;
-import com.TiendaM_IQ2023.domain.categoria;
+import com.TiendaM_IQ2023.domain.Categoria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +17,7 @@ public class CategoriaController {
     @GetMapping("/categoria/listado")
     public String inicio(Model model) {
 
-        var categorias = categoriaService.getcategorias(false);
+        var categorias = categoriaService.getCategorias(false);
         model.addAttribute("categorias", categorias);
 
         return "/categoria/listado";
@@ -25,26 +25,26 @@ public class CategoriaController {
     }
 
     @GetMapping("/categoria/nuevo")
-    public String nuevaCategoria(categoria Categoria) {
+    public String nuevaCategoria(Categoria categoria) {
         return "/categoria/modificar";
     }
 
     @PostMapping("/categoria/guardar")
-    public String guardarCategoria(categoria Categoria) {
-        categoriaService.save(Categoria);
+    public String guardarCategoria(Categoria categoria) {
+        categoriaService.save(categoria);
         return "redirect:/categoria/listado";
     }
 
     @GetMapping("//categoria/modificar/{Idcategoria}")
-    public String modificarCategoria(categoria Categoria, Model model) {
-        Categoria = categoriaService.getcategoria(Categoria);
-        model.addAttribute("categoria", Categoria);
+    public String modificarCategoria(Categoria categoria, Model model) {
+        categoria = categoriaService.getCategoria(categoria);
+        model.addAttribute("categoria", categoria);
         return "/categoria/modificar";
 
     }
 
     @GetMapping("/eliminarCliente/{Idcategoria}")
-    public String eliminarCliente(categoria Categoria) {
+    public String eliminarCliente(Categoria Categoria) {
         categoriaService.delete(Categoria);
         return "redirect:/categoria/listado";
     }

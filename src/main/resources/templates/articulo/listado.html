@@ -9,10 +9,10 @@
         <header th:replace="layout/plantilla :: header" />
         <div class="contenido">
             <h2>Lista de clientes</h2>
-            <a th:href="@{/articulo/nuevo}">Nuevo cliente</a>
+            <a th:href="@{/Articulo/nuevo}">Nuevo cliente</a>
             <br/><!-- comment -->
             <br/>
-            <div th:if="${articulos != null and !articulos.empty}">
+            <div th:if="${Articulos != null and !Articulos.empty}">
                 <table border="1">
                     <thead>
                     <th>Descripcion</th>
@@ -22,19 +22,19 @@
                     <th colspan="2">Acciones</th>
                     </thead>
                     <tbody>
-                        <tr th:each="item : ${articulos}">
+                        <tr th:each="item : ${Articulos}">
                             <td th:text="${item.descripcion}"></td>
                              <td th:text="${#numbers.formatDecimal(item.precio, 3, 2)}"></td>
                             <td th:text="${item.existencias}"></td>
                             <td><input type="checkbox" name="activo" th:checked="${item.activo}" disable="true"></td>
 
-                            <td><a th:href="@{/articulo/modificar/} + ${item.idArticulo}">Modificar</a></td>
-                            <td><a th:href="@{/articulo/eliminar/} + ${item.idArticulo}">Eliminar</a></td>
+                            <td><a th:href="@{/Articulo/modificar/} + ${item.idArticulo}">Modificar</a></td>
+                            <td><a th:href="@{/Articulo/eliminar/} + ${item.idArticulo}">Eliminar</a></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div th:if="${articulos == null or articulos.empty}">
+            <div th:if="${Articulos == null or Articulos.empty}">
                 La lista de clientes esta vacia...
             </div>
         </div>

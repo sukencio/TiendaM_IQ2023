@@ -36,7 +36,7 @@ public class ClienteController {
         return "redirect:/cliente/listado";
     }
     
-    @GetMapping("//cliente/modificar/{Idcliente}")
+    @GetMapping("//cliente/modificar/{idCliente}")
     public String modificarCliente(Cliente cliente, Model model)
     {
         cliente = clienteService.getCliente(cliente);
@@ -44,7 +44,7 @@ public class ClienteController {
         return "/cliente/modificar";
         
     }
-    @GetMapping("/eliminarCliente/{Idcliente}")
+    @GetMapping("/eliminarCliente/{idCliente}")
     public String eliminarCliente(Cliente cliente)
     {
         clienteService.delete(cliente);
